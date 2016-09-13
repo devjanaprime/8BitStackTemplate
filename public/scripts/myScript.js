@@ -1,6 +1,20 @@
 console.log( 'js' );
 $( document ).ready( function(){
   console.log( 'JQ');
+
+  $( '#getter' ).on( 'click', function(){
+    // make ajax call to getPeeps route and show results
+    // no body needed for get call
+    $.ajax({
+      url: '/getPeeps',
+      type: 'GET',
+      success: function( data ){
+        // data is returned json array from server
+        console.log( 'success in ajax:', data );
+      }
+    }); //end ajax
+  }); // end getter on click
+
   $( '#sender' ).on( 'click', function(){
     console.log( 'in sender on click' );
     // assemble object to send
