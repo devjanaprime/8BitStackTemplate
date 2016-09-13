@@ -17,4 +17,15 @@ app.listen( port, function(){
 app.get( '/', function( req, res ){
   console.log( 'base URL hit' );
   res.sendFile( 'index.html' );
-});
+}); // end base url
+
+// post template
+app.post( '/poster', urlencodedParser, function( req, res ){
+  console.log( 'in post template', req.body );
+  // assemble objectToSend
+  var objectToSend={
+    response: 'from server'
+  };
+  // send object back to client
+  res.send( objectToSend );
+}); // end post template
