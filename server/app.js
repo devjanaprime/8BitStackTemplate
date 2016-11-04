@@ -14,7 +14,7 @@ app.use( express.static( 'public' ) );
 // spin up server
 app.listen( port, function(){
   console.log( 'server up on', port );
-});
+}); // end app listen
 
 // base
 app.get( '/', function( req, res ){
@@ -40,23 +40,16 @@ app.get( '/getPeeps', function( req, res ){
       queryResults.on( 'row', function( row ){
         // runs for each row in the query result
         resultArray.push( row );
-      }); // end on row
+      }); // end query on row
       queryResults.on( 'end', function(){
         // we're done
         done();
         // return result as a json version of array
         return res.json( resultArray );
-      });
+      }); // end query on end
     } // end no error
   }); // end connect
-
-  // assemble an object
-  /// - DANGER!!! will break if sending json above - ///
-  // var objectToSend={
-  //   response: 'asdf'
-  // };
-  // res.send( objectToSend );
-});
+}); // end get route
 
 // post template
 app.post( '/poster', urlencodedParser, function( req, res ){
